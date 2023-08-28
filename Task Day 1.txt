@@ -1,0 +1,69 @@
+Q1 Write a blog on difference between http1.1 vs http2.
+
+Ans:
+HTTP/1.1,
+ which has been widely used since its standardization in 1999, forms the bedrock of the modern web. In this version of the protocol, each request-response cycle requires a new TCP connection to the server. This approach introduced a few performance bottlenecks:
+
+Head-of-Line Blocking: Since each request-response cycle was conducted over a separate connection, requests would often get delayed behind large files or slow connections, leading to a phenomenon known as head-of-line blocking. This resulted in suboptimal page loading times.
+
+Redundant Header Fields: With HTTP/1.1, headers were sent with each request, leading to unnecessary redundancy and increased data transfer.
+
+Multiple Requests: The browser's limit of concurrent connections per domain (typically around 6) meant that multiple assets (e.g., images, scripts, stylesheets) were queued up, further slowing down the page loading process.
+
+HTTP/2: 
+The Evolution
+
+In response to the limitations of HTTP/1.1, HTTP/2 emerged as a significant improvement. It was standardized by the IETF in 2015, aiming to enhance web performance and reduce latency. One of the most notable changes in HTTP/2 is its approach to multiplexing.
+
+Multiplexing: HTTP/2 enables multiplexing over a single TCP connection, allowing multiple requests and responses to be sent simultaneously without the risk of head-of-line blocking. This drastically improves the efficiency of data transmission and speeds up page loading times.
+
+Binary Framing: Unlike the plain text format of HTTP/1.1, HTTP/2 employs a binary framing mechanism that divides data into smaller frames. This minimizes the risk of errors and simplifies error handling.
+
+Header Compression: HTTP/2 utilizes header compression techniques, like HPACK, which significantly reduce the overhead associated with redundant header fields, resulting in reduced data transfer and improved performance.
+
+Server Push: HTTP/2 introduces the concept of server push, where the server can proactively send assets to the client before they are requested. This feature further optimizes page loading by reducing the number of round-trips needed.
+
+Prioritization: With HTTP/2, the client and server can negotiate the order in which resources are delivered, ensuring that critical assets are prioritized and loaded first.
+
+
+Q2 write a blog about objects and its internal representation in java script
+
+Ans:
+JavaScript, the versatile and dynamic programming language that powers much of the modern web, revolves around objects. Objects are at the heart of JavaScript, serving as the building blocks for creating complex data structures and enabling a wide range of functionalities. In this blog post, we'll dive deep into the world of JavaScript objects and explore their internal representation, shedding light on how they work behind the scenes.
+
+Understanding JavaScript Objects
+
+At its core, JavaScript is an object-oriented language, and almost everything in it is an object or behaves like one. Objects in JavaScript can be thought of as collections of key-value pairs, where each key is a property or method name, and the corresponding value can be any data type, including other objects.
+
+Creating Objects:
+Objects in JavaScript can be created in various ways:
+Using the Object Constructor: let myObject = new Object();
+Using Object Literal Notation: let person = { name: "John", age: 30 };
+Using Constructor Functions:
+javascript
+Copy code
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
+let person = new Person("John", 30);
+Internal Representation of Objects
+
+While the syntax for creating objects might seem straightforward, let's peek under the hood and explore how objects are represented internally in JavaScript:
+
+Prototypes:
+JavaScript employs a prototype-based inheritance model. Each object in JavaScript has an associated prototype object, which acts as a template for that object. If a property or method is not found in an object, JavaScript looks for it in the object's prototype chain.
+
+Property Descriptors:
+Every property in an object has an associated property descriptor, which defines attributes such as whether the property is writable, enumerable, and configurable.
+
+Hidden Classes and Shape Transition:
+JavaScript engines optimize object access using hidden classes. As an object's properties change or new properties are added, the hidden class of the object may transition, affecting its performance.
+
+Memory Allocation:
+JavaScript engines handle memory allocation for objects dynamically. The properties and values of an object are stored in memory, and the engine manages memory deallocation through techniques like garbage collection.
+
+Built-in Object Types:
+JavaScript provides several built-in object types like arrays, functions, and dates, each with its own internal representation and behavior.
+
+Q3 
